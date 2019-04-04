@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
+import API from "../utils/API";
 
 
 class SmisForm extends Component {
@@ -185,7 +186,16 @@ class SmisForm extends Component {
     if(this.state.firstName.length > 0 && this.state.lastName.length > 0 && this.state.day.length > 0 && this.state.month.length > 0 && this.state.year.length > 0 && this.state.email.includes("@", ".com") === true && this.state.email.includes(".com") === true && this.state.phone.length === 14){
       e.preventDefault();
      this.props.submit(this.state.month, this.state.day, this.state.year, this.state.zip);
-
+     API.saveLead({
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      day: this.state.day,
+      month: this.state.month,
+      year: this.state.year,
+      phone: this.state.phone,
+      zip: this.state.zip
+    });
       this.setState({
         zip: '',
         firstName: '',
