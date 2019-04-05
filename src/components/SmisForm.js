@@ -168,11 +168,6 @@ class SmisForm extends Component {
       });
     }
 
-
-
-
-
-
     if(this.state.phone.length === 14){
       this.setState({
         phoneClass: "none"
@@ -194,7 +189,7 @@ class SmisForm extends Component {
       month: this.state.month,
       year: this.state.year,
       phone: this.state.phone,
-      zip: this.state.zip
+      zipCode: this.state.zip
     });
       this.setState({
         zip: '',
