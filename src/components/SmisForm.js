@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 import API from "../utils/API";
+import Group from "../images/Group.png";
 
 
 class SmisForm extends Component {
@@ -13,7 +14,7 @@ class SmisForm extends Component {
     month: '',
     year: '1950',
     phone: '',
-    class1: "paddingBottom",
+    class1: "",
     class2: "none",
     zipClass: "none",
     fNameClass: "none",
@@ -35,7 +36,7 @@ class SmisForm extends Component {
       this.setState({ zip: e.target.value });
     }
 
-    
+
 
 
 
@@ -96,10 +97,7 @@ class SmisForm extends Component {
       this.setState({ phone: e.target.value });
     }
 
-    if(window.event.type === "input"){
-      this.setState({ zip: e.target.value });
 
-    }
 
   }
 
@@ -212,12 +210,13 @@ class SmisForm extends Component {
   }
 
   nextStep = () => {
-
     if(this.state.zip.length > 5 || this.state.zip.length < 5 ){
       this.setState({
         zipClass: ""
       });
     }else if(this.state.zip.length === 5) {
+      this.props.changePhoto();
+
       this.setState({
         class1: "none",
         class2: "paddingBottom"
@@ -235,31 +234,39 @@ class SmisForm extends Component {
     return(
       <div className="form-group formTwo">
       <div className="wrap1 divPadding">
-      <div className="stepTwoForm">
+
+
+
+      <div className="stepTwoForm text-left">
         <MDBRow className={this.state.class1}>
-        <MDBCol lg="12" >
-        <label htmlFor="firstNameInput">ZIP Code <span className={this.state.zipClass} style={{color: "red"}}> *This field is required</span></label>
+
+        <MDBCol lg="12" className="text-left" >
 
         <input
           type="text"
-          className="form-control formInput mb-3"
+          className="form-control formInput "
           id="zipInput"
           onChange={this.handleValueChange}
           value={this.state.zip}
           maxLength={5}
+          placeholder="ZIP CODE"
 
         />
-        <button onClick={this.nextStep} className="submitButton hoverable mb-3">Next Step</button>
+        <button onClick={this.nextStep} className="submitButton hoverable ">Find My Plan</button>
+        <label htmlFor="firstNameInput"><span className={this.state.zipClass} style={{color: "red"}}> *This field is required</span></label>
+
         </MDBCol>
 
     </MDBRow>
     <MDBRow className={this.state.class2}>
-
+    <div className="formTitle text-center mb-3 pb-3">
+      <h3 >Tell us more about yourself</h3>
+    </div>
           <MDBCol lg="6" className="paddingRight">
           <label htmlFor="firstNameInput">First Name<span className={this.state.fNameClass} style={{color: "red"}}> *This field is required</span></label>
           <input
             type="text"
-            className="form-control formInput"
+            className="form-control formInput2"
             id="firstNameInput"
             onChange={this.handleValueChange2}
             value={this.state.firstName}
@@ -269,7 +276,7 @@ class SmisForm extends Component {
           <MDBCol lg="6"><label htmlFor="">Last Name<span className={this.state.lNameClass} style={{color: "red"}}> *This field is required</span></label>
           <input
             type="text"
-            className="form-control formInput"
+            className="form-control formInput2"
             id="firstNameInput"
             onChange={this.handleValueChange3}
             value={this.state.lastName}
@@ -277,6 +284,36 @@ class SmisForm extends Component {
         </MDBRow>
         <MDBRow className={this.state.class2}>
           <MDBCol lg="6" className="paddingRight">
+          <label htmlFor="firstNameInput">ZIP CODE<span className={this.state.zipClass} style={{color: "red"}}> *This field is required</span></label>
+
+          <input
+            type="text"
+            className="form-control formInput2 "
+            id="zipInput"
+            onChange={this.handleValueChange}
+            value={this.state.zip}
+            maxLength={5}
+            placeholder="ZIP CODE"
+
+          />
+          </MDBCol>
+          <MDBCol lg="6">
+            <label htmlFor="firstNameInput">Phone Number<span className={this.state.phoneClass} style={{color: "red"}}> *This field is required</span></label>
+            <input
+              type="text"
+              className="form-control formInput2"
+              id="firstNameInput"
+              onChange={this.handleValueChange4}
+              value={this.state.phone}
+              placeholder="###-###-####"
+              pattern="\d{3}[\-]\d{3}[\-]\d{4}"
+              maxLength={14}
+            />
+          </MDBCol>
+        </MDBRow>
+        <MDBRow className={this.state.class2}>
+
+          <MDBCol lg="12">
           <label htmlFor="firstNameInput">Date of Birth <span className={this.state.dobClass} style={{color: "red"}}> *This field is required</span></label>
           <div>
             <select onChange={this.handleValueChange5} className=" custom-select">
@@ -437,52 +474,28 @@ class SmisForm extends Component {
             </select>
           </div>
           </MDBCol>
-          <MDBCol lg="6">
-            <label htmlFor="firstNameInput">Phone Number<span className={this.state.phoneClass} style={{color: "red"}}> *This field is required</span></label>
-            <input
-              type="text"
-              className="form-control formInput"
-              id="firstNameInput"
-              onChange={this.handleValueChange4}
-              value={this.state.phone}
-              placeholder="###-###-####"
-              pattern="\d{3}[\-]\d{3}[\-]\d{4}"
-              maxLength={14}
-            />
-          </MDBCol>
+
+
         </MDBRow>
+
         <MDBRow className={this.state.class2}>
 
           <MDBCol lg="12">
             <label htmlFor="firstNameInput">Email Address<span className={this.state.emailClass} style={{color: "red"}}> *This field is required</span></label>
             <input
               type="text"
-              className="form-control formInput mb-3"
+              className="form-control formInput2 mb-3"
               id="firstNameInput"
               onChange={this.handleValueChange8}
               value={this.state.email}
             />
           </MDBCol>
 
-          <button onClick={this.handleSubmit} className="submitButton hoverable">Compare Rates</button>
+          <button onClick={this.handleSubmit} className="submitButtonStep2 hoverable align-self-center"><img src={Group} className="img-responsive oldMountain "/></button>
 
         </MDBRow>
         </div>
-        <div className="stepTwoLegal">
-          <p>By clicking the button above, you provide your signature expressly consenting to receive communications via live telephone, an automatic dialing system, pre-recorded message, or text message from United Medicare Advisors or its subsidiaries, affiliates, or agents at the telephone number provided including your wireless number (if provided) as well as via email regarding your health insurance options including Medicare Supplement Insurance, Medicare Advantage, and/or Medicare Part D. Your consent to receive communications in this way is not required as a condition of purchasing any goods or services. Your telephone company may impose additional charges for text messages, and you may revoke your consent at any time through any reasonable manner. You acknowledge that you have read and understand all of the Terms and Conditions and Privacy Policy of this site.</p>
 
-          <p>UnitedMedicareAdvisors.com is an online resource for Medicare Supplement, Medicare Advantage, Medicare Part D, and health insurance information, along with competitive quotes from some of the nation’s top insurance companies. Our mission is to help individuals by offering the best available plans at prices that are affordable.</p>
-
-          <p>United Medicare Advisors and UnitedMedicareAdvisors.com is wholly owned and operated by Spring Insurance Solutions LLC. Spring Insurance Solutions and their divisions are licensed to sell insurance products in the following states: AL, AZ, AR, CO, CT, DE, FL, GA, ID, IL, IN, IA, KS, KY, LA, ME, MD, MI, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NC, ND, OH, OK, OR, PA, SC, SD, TN, TX, UT, VT, VA, WA, DC, WV, WI, WY. </p>
-
-          <p>To provide you with easy-to-understand information about your Medicare options, UnitedMedicareAdvisors.com researched government websites and publications, such as those of Medicare.gov, 2016 Choosing a Medigap Policy, and Medicare and You 2017. Neither Spring Insurance Solutions LLC nor UnitedMedicareAdvisors.com are associated with or endorsed by these government websites and publications. We believe the sources we use to provide information are reliable. However, we do not guarantee or warrant the accuracy of this information.</p>
-
-          <p>UnitedMedicareAdvisors.com provides the material on this website for informational purposes only.</p>
-
-          <p>The contents of this website are subject to change without notice. If you would like to find more information about the Government Medicare program please visit the Official US Government Site for People with Medicare located at www.medicare.gov.</p>
-
-          <p>Should you call the number listed above, you will speak with a licensed sales agent who can answer your questions and provide information about Medicare Supplement Insurance plans; this agent may also be able to connect you with a licensed sales agent to discuss Medicare Advantage and/or Medicare Part D plans. Neither United Medicare Advisors nor its agents are connected with or endorsed by the U.S. government or the federal Medicare program.</p>
-          </div>
 
       </div>
 

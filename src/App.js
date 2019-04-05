@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import{BrowserRouter, Route, Switch} from 'react-router-dom';
-
+import Navbar from "./components/Navbar";
 import { MDBContainer} from 'mdbreact';
-
+import PrivacyPolicy from "./SMISPages/PrivacyPolicy";
+import TermsConditions from "./SMISPages/TermsConditions";
+import SMISHome from "./SMISPages/SMISHome";
+import ThankYou from "./SMISPages/ThankYou";
+import GoogleFontsPlugin from 'google-fonts-webpack-plugin';
 
 import './App.css';
 
 
 
 
-import SMISHome from "./SMISPages/SMISHome";
 
 
 class App extends Component {
@@ -135,15 +138,20 @@ class App extends Component {
       <BrowserRouter>
 
         <div>
-        
+          <Navbar />
 
         <Switch>
 
           <Route exact path='/' render={(props) => <SMISHome {...props} state={this.state} submit={this.stepTwoSubmit} />} />
+          <Route exact path='/privacy-policy' render={(props) => <PrivacyPolicy  />} />
+          <Route exact path='/terms-conditions' render={(props) => <TermsConditions  />} />
+          <Route path='/thank-you' render={(props) => <ThankYou {...props} state={this.state} />} />
+
+
+
 
 
         </Switch>
-
 
 
 
