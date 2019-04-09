@@ -12,13 +12,14 @@ class Hero extends Component {
     photo1: OldCouple,
     photo1Class: "img-responsive width100 topHeroImg",
     photo2Class: "img-responsive width100 bottomHeroImg",
-    divClass: "blueGradient pt-5"
+    divClass: "blueGradient pt-5 "
   }
 
 changePhoto = () => {
   this.setState({
     photo1Class: "img-responsive width100 topHeroImg animated fadeOut",
-    photo2Class: "img-responsive width100 bottomHeroImg animated fadeOut"
+    photo2Class: "img-responsive width100 bottomHeroImg animated fadeOut",
+    divClass: "blueGradient pt-5 heightTransition"
   })
 
   setTimeout(

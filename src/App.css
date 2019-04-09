@@ -6,6 +6,12 @@
 }
   }
 
+  @keyframes divHeight {
+  0% {height: 619px;}
+
+  100% {height: 850px;}
+}
+
 
 
 .SmartMatchDiffDiv{
@@ -67,7 +73,12 @@
   }
 /* Universal Styles */
 
-
+.heightTransition{
+  animation-name: divHeight;
+  animation-duration: .38s;
+  animation-delay: .55s;
+  height: auto;
+}
 
  #Body {
    background-color: #2E193F !important;
