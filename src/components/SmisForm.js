@@ -24,7 +24,7 @@ class SmisForm extends Component {
     phoneClass: "none",
   }
 
-  handleValueChange = (e) => {
+  zipInputChange = (e) => {
 
     var regex = /[0-9|/]/;
 
@@ -45,14 +45,14 @@ class SmisForm extends Component {
 
 
 
-  handleValueChange2 = (e) => {
+  fNameInputChange = (e) => {
         this.setState({ firstName: e.target.value });
       }
 
-  handleValueChange3 = (e) => {
+  lNameInputChange = (e) => {
           this.setState({ lastName: e.target.value });
         }
-  handleValueChange4 = (e) => {
+  phoneInputChange = (e) => {
     var regex = /[0-9|/]/;
 
     if(regex.test(window.event.data) === true){
@@ -102,16 +102,16 @@ class SmisForm extends Component {
   }
 
 
-  handleValueChange5 = (e) => {
+  monthInputChange = (e) => {
               this.setState({ month: e.target.value });
             }
-  handleValueChange6 = (e) => {
+  dayInputChange = (e) => {
                 this.setState({ day: e.target.value });
               }
-  handleValueChange7 = (e) => {
+  yearInputChange = (e) => {
                   this.setState({ year: e.target.value });
                 }
-  handleValueChange8 = (e) => {
+  emailInputChange = (e) => {
                     this.setState({ email: e.target.value });
                   }
 
@@ -176,19 +176,29 @@ class SmisForm extends Component {
       });
     }
 
+    if(this.state.zip.length > 5 || this.state.zip.length < 5 ){
+      this.setState({
+        zipClass: ""
+      });
+    }else{
+      this.setState({
+        zipClass: "none"
+      });
+    }
+
     if(this.state.firstName.length > 0 && this.state.lastName.length > 0 && this.state.day.length > 0 && this.state.month.length > 0 && this.state.year.length > 0 && this.state.email.includes("@", ".com") === true && this.state.email.includes(".com") === true && this.state.phone.length === 14){
       e.preventDefault();
      this.props.submit(this.state.month, this.state.day, this.state.year, this.state.zip);
-     API.saveLead({
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      email: this.state.email,
-      day: this.state.day,
-      month: this.state.month,
-      year: this.state.year,
-      phone: this.state.phone,
-      zipCode: this.state.zip
-    });
+    //  API.saveLead({
+    //   firstName: this.state.firstName,
+    //   lastName: this.state.lastName,
+    //   email: this.state.email,
+    //   day: this.state.day,
+    //   month: this.state.month,
+    //   year: this.state.year,
+    //   phone: this.state.phone,
+    //   zipCode: this.state.zip
+    // });
       this.setState({
         zip: '',
         firstName: '',
@@ -199,7 +209,16 @@ class SmisForm extends Component {
         year: '',
         phone: '',
     });
-    this.redirectToTarget();
+    this.props.fadeOutDiv();
+    this.props.fade();
+
+    setTimeout(
+       function() {
+         this.redirectToTarget();
+       }
+       .bind(this),
+       500
+   );
   }
 
   }
@@ -213,10 +232,22 @@ class SmisForm extends Component {
       this.props.changePhoto();
 
       this.setState({
-        class1: "none",
-        class2: "paddingBottom"
+        class1: "animated fadeOut",
+
       });
     }
+
+    setTimeout(
+       function() {
+         this.setState({
+           class1: "none",
+           class2: "paddingBottom animated fadeIn",
+           zipClass: "none"
+         })
+       }
+       .bind(this),
+       900
+   );
 
 
   }
@@ -227,8 +258,8 @@ class SmisForm extends Component {
 
 
     return(
-      <div className="form-group formTwo">
-      <div className="wrap1 divPadding">
+      <div className="form-group formTwo mb-5">
+      <div className="wrap1 ">
 
 
 
@@ -241,14 +272,14 @@ class SmisForm extends Component {
           type="text"
           className="form-control formInput "
           id="zipInput"
-          onChange={this.handleValueChange}
+          onChange={this.zipInputChange}
           value={this.state.zip}
           maxLength={5}
           placeholder="ZIP CODE"
 
         />
         <button onClick={this.nextStep} className="submitButton hoverable ">Find My Plan</button>
-        <label htmlFor="firstNameInput"><span className={this.state.zipClass} style={{color: "red"}}> *This field is required</span></label>
+        <span className={this.state.zipClass} style={{color: "red"}}> *This field is required</span>
 
         </MDBCol>
 
@@ -258,60 +289,65 @@ class SmisForm extends Component {
       <h3 >Tell us more about yourself</h3>
     </div>
           <MDBCol lg="6" className="paddingRight">
-          <label htmlFor="firstNameInput">First Name<span className={this.state.fNameClass} style={{color: "red"}}> *This field is required</span></label>
+          <label htmlFor="firstNameInput">First Name</label>
           <input
             type="text"
             className="form-control formInput2"
             id="firstNameInput"
-            onChange={this.handleValueChange2}
+            onChange={this.fNameInputChange}
             value={this.state.firstName}
           />
+          <span className={this.state.fNameClass} style={{color: "red"}}> *This field is required</span>
           </MDBCol>
 
-          <MDBCol lg="6"><label htmlFor="">Last Name<span className={this.state.lNameClass} style={{color: "red"}}> *This field is required</span></label>
+          <MDBCol lg="6"><label htmlFor="lastNameInput">Last Name</label>
           <input
             type="text"
             className="form-control formInput2"
-            id="firstNameInput"
-            onChange={this.handleValueChange3}
+            id="lastNameInput"
+            onChange={this.lNameInputChange}
             value={this.state.lastName}
-          /></MDBCol>
+          />
+          <span className={this.state.lNameClass} style={{color: "red"}}> *This field is required</span>
+          </MDBCol>
         </MDBRow>
         <MDBRow className={this.state.class2}>
           <MDBCol lg="6" className="paddingRight">
-          <label htmlFor="firstNameInput">ZIP CODE<span className={this.state.zipClass} style={{color: "red"}}> *This field is required</span></label>
+          <label htmlFor="zipInput">ZIP CODE</label>
 
           <input
             type="text"
             className="form-control formInput2 "
             id="zipInput"
-            onChange={this.handleValueChange}
+            onChange={this.zipInputChange}
             value={this.state.zip}
             maxLength={5}
             placeholder="ZIP CODE"
 
           />
+          <span className={this.state.zipClass} style={{color: "red"}}> *This field is required</span>
           </MDBCol>
           <MDBCol lg="6">
-            <label htmlFor="firstNameInput">Phone Number<span className={this.state.phoneClass} style={{color: "red"}}> *This field is required</span></label>
+            <label htmlFor="phoneInput">Phone Number</label>
             <input
               type="text"
               className="form-control formInput2"
-              id="firstNameInput"
-              onChange={this.handleValueChange4}
+              id="phoneInput"
+              onChange={this.phoneInputChange}
               value={this.state.phone}
               placeholder="###-###-####"
               pattern="\d{3}[\-]\d{3}[\-]\d{4}"
               maxLength={14}
             />
+            <span className={this.state.phoneClass} style={{color: "red"}}> *This field is required</span>
           </MDBCol>
         </MDBRow>
         <MDBRow className={this.state.class2}>
 
           <MDBCol lg="12">
-          <label htmlFor="firstNameInput">Date of Birth <span className={this.state.dobClass} style={{color: "red"}}> *This field is required</span></label>
-          <div>
-            <select onChange={this.handleValueChange5} className=" custom-select">
+          <label htmlFor="dobInput">Date of Birth </label>
+          <div className="">
+            <select onChange={this.monthInputChange} className=" custom-select">
               <option>Month</option>
               <option value="01">01</option>
               <option value="02">02</option>
@@ -327,7 +363,7 @@ class SmisForm extends Component {
               <option value="12">12</option>
             </select>
 
-            <select onChange={this.handleValueChange6} className=" custom-select middleSelect">
+            <select onChange={this.dayInputChange} className=" custom-select middleSelect">
               <option>Day</option>
               <option value="01">01</option>
               <option value="02">02</option>
@@ -364,7 +400,7 @@ class SmisForm extends Component {
 
             </select>
 
-            <select onChange={this.handleValueChange7} className=" custom-select">
+            <select onChange={this.yearInputChange} className=" custom-select">
               <option>Year</option>
               <option value="1920">1920</option>
               <option value="1921">1921</option>
@@ -468,6 +504,7 @@ class SmisForm extends Component {
               <option value="2019">2019</option>
             </select>
           </div>
+          <span className={this.state.dobClass} style={{color: "red"}}> *This field is required</span>
           </MDBCol>
 
 
@@ -476,17 +513,18 @@ class SmisForm extends Component {
         <MDBRow className={this.state.class2}>
 
           <MDBCol lg="12">
-            <label htmlFor="firstNameInput">Email Address<span className={this.state.emailClass} style={{color: "red"}}> *This field is required</span></label>
+            <label htmlFor="emailInput">Email Address</label>
             <input
               type="text"
-              className="form-control formInput2 mb-3"
-              id="firstNameInput"
-              onChange={this.handleValueChange8}
+              className="form-control formInput2 "
+              id="emailInput"
+              onChange={this.emailInputChange}
               value={this.state.email}
             />
+            <span className={this.state.emailClass} style={{color: "red"}}> *This field is required</span>
           </MDBCol>
 
-          <button onClick={this.handleSubmit} className="submitButtonStep2 hoverable align-self-center"><img src={Group} className="img-responsive oldMountain "/></button>
+          <button onClick={this.handleSubmit} className="submitButtonStep2 hoverable align-self-center mt-3"><img src={Group} className="img-responsive oldMountain "/></button>
 
         </MDBRow>
         </div>

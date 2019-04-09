@@ -28,12 +28,16 @@ changePhoto = () => {
         <MDBRow>
 
           <MDBCol lg="6" className="paddingRight">
-            <h2 className="pb-3">Medicare and you</h2>
+          <div className='coupleMountain img-responsive width100 bottomHeroImg mb-5' ></div>
+
+            <h2 className="pb-3 purpleFont">Medicare and you</h2>
             <p className="pb-3">Medicare is not one-size-fits-all. With all its moving pieces and parts, deciphering what Medicare insurance options you need can feel overwhelming and nearly impossible. Our licensed insurance agents determine your priorities first, and then utilize our state-of-the-art SmartMatch technology to match you with a solution designed specifically for you.</p>
-            <h3>We call that getting <strong>SmartMatched.</strong></h3>
+            <h3 className="purpleFont">We call that getting <strong>SmartMatched.</strong></h3>
           </MDBCol>
           <MDBCol lg="6" className="text-right paddingLeft">
-          <img src={CoupleMountain} className='img-responsive oldMountain' />
+
+          <div className='coupleMountain img-responsive width100 topHeroImg' ></div>
+
 
           </MDBCol>
 

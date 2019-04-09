@@ -13,18 +13,18 @@ class ThankYou extends Component {
     }
   render(){
 
-    setTimeout(
-    function() {
-      var zip = this.props.state.zip;
-      var month = this.props.state.month;
-      var day = this.props.state.day;
-      var year = this.props.state.year;
-
-      window.location = 'https://rates.web.unitedmedicareadvisors.net/#!/results?businessKey=uma&source=UMAOrganic&dob=' + month + "%2F" + day + "%2F" + year + '&zipCode=' + zip;
-    }
-    .bind(this),
-    5000
-);
+//     setTimeout(
+//     function() {
+//       var zip = this.props.state.zip;
+//       var month = this.props.state.month;
+//       var day = this.props.state.day;
+//       var year = this.props.state.year;
+//
+//       window.location = 'https://rates.web.unitedmedicareadvisors.net/#!/results?businessKey=uma&source=UMAOrganic&dob=' + month + "%2F" + day + "%2F" + year + '&zipCode=' + zip;
+//     }
+//     .bind(this),
+//     5000
+// );
 
 
 

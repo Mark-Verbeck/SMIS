@@ -13,15 +13,14 @@ const Navbar = (props) => {
       <div className="wrap1">
         <MDBRow>
 
-          <MDBCol lg="6"  className="">
-          <Link to="/"> <img src={logo} className='img-responsive ' /> </Link>
+          <MDBCol xsm="12" sm="12"  className="text-right d-flex align-items-center">
+           <img src={logo} className='img-responsive logo floatLeft' />
 
 
-          </MDBCol>
-          <MDBCol lg="6" className="text-right">
 
-          <img src={phone} className='img-responsive navImg' />
-          <div className="navText floatRight text-left">
+
+          <img src={phone} className='img-responsive ml-auto navImg ' />
+          <div className="navText floatRight text-left align-self-center">
             <a href="tel: 9131234567"><h3><strong>(913) 123-4567</strong></h3></a>
             <Link to="/"><h4>Get <strong>SmartMatched</strong> Today!</h4></Link>
           </div>

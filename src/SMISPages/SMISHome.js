@@ -9,11 +9,26 @@ import Footer from "../components/Footer";
 
 
 class StepTwo extends Component {
+
+  state={
+    divClass: "divPadding whiteBackground SmartMatchDiffDiv"
+  }
+
+  fadeOutDiv = () => {
+    this.setState({
+      divClass: "divPadding whiteBackground SmartMatchDiffDiv animated fadeOut"
+
+    })
+  }
+
+
+
+
   render(){
     return(
       <div>
-        <Hero {...this.props} state={this.props.state} submit={this.props.submit} />
-        <SmartMatchDifference />
+        <Hero {...this.props} state={this.props.state} submit={this.props.submit} fade={this.fadeOutDiv} />
+        <SmartMatchDifference state={this.state} />
         <MedicareAndYou />
         <Footer />
 
