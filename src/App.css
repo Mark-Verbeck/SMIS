@@ -12,6 +12,12 @@
   100% {height: 850px;}
 }
 
+@keyframes divHeight2 {
+0% {height: 94px;}
+
+100% {height: 570px;}
+}
+
 
 
 .SmartMatchDiffDiv{
@@ -80,9 +86,18 @@
   height: auto;
 }
 
+.heightTransition2{
+  animation-name: divHeight2;
+  animation-duration: .38s;
+  animation-delay: .55s;
+  height: auto;
+}
+
  #Body {
    background-color: #2E193F !important;
    padding: 0px 50px 50px !important;
+   font-family: Lato, "Lucida Grande", Tahoma, Sans-Serif;
+
  }
 .table{
   display: table;
@@ -266,7 +281,6 @@ margin-left: 0px !important;
 }
 
 .quoteFont {
-  font-family: "Roboto", sans-serif;
   font-size: 24px;
   font-weight: thin;
   color: #292b2c;
@@ -274,14 +288,12 @@ margin-left: 0px !important;
 }
 
 .quoteFooter{
-  font-family: "Museo Slab", serif;
   font-size: 20px;
   font-weight: 900;
   color: #033a4e;
 }
 
 .listNumbers {
-  font-family: "Museo Slab", serif;
   font-size: 20px;
   font-weight: 500;
   color: #033a4e;
@@ -385,45 +397,39 @@ font-size: 44px !important;
 }
 
 h1 {
-  font-family: Museo Slab Serif;
   font-size: 48px !important;
   font-weight: 900 !important;
   color: #033a4e;
 }
 
 h2 {
-  font-family: Museo Slab Serif;
   font-size: 36px !important;
   font-weight: 500 !important;
   color: #033a4e;
 }
 
 h3 {
-  font-family: Museo Slab Serif;
   font-size: 24px !important;
   font-weight: 500 !important;
   color: #033a4e;
 }
 
 h4 {
-  font-family: Museo Slab Serif;
   font-size: 18px !important;
   font-weight: 700 !important;
   color: #033a4e;
 }
 
 h5 {
-  font-family: Museo Slab Serif;
   font-size: 18px !important;
   font-weight: 300 !important;
   color: #033a4e;
 }
 
 a{
-  font-family: "Roboto" sans-serif;
   font-size: 18px;
   font-weight: normal;
-  color: #2aacc8 !important;
+  color: #ffffff !important;
 }
 
 a:hover{
@@ -524,7 +530,7 @@ a:hover{
 
 .submitButton{
 
-  background-image: linear-gradient(#ef3937 50%, #C4201E 50%);
+  background-image: linear-gradient(#ED5C2E, #C44720);
   color: white;
   padding: 13px 0px;
   width: 50%;
@@ -536,14 +542,14 @@ a:hover{
 }
 
 .submitButton:hover {
-    background-image: linear-gradient(#84161f 50%, #701319 50%);
+    background-image: linear-gradient(#84161f, #701319);
 
     cursor: pointer;
 }
 
 .submitButtonStep2{
 
-  background-image: linear-gradient(#ef3937 50%, #C4201E 50%);
+  background-image: linear-gradient(#ED5C2E, #C44720);
   color: white;
   padding: 0px 10px;
   width: 100%;
@@ -554,19 +560,25 @@ a:hover{
 }
 
 .submitButtonStep2:hover {
-    background-image: linear-gradient(#84161f 50%, #701319 50%);
+    background-image: linear-gradient(#84161f,#701319);
 
     cursor: pointer;
 }
 
 .submitButtonThankyou{
 
-  background-image: linear-gradient(#ef3937 50%, #C4201E 50%);
+  background-image: linear-gradient(#ED5C2E, #C44720);
   color: white;
   padding: 13px 10px;
   width: 100%;
   height: 3.38em !important;
   border-radius: 5px;
+}
+
+.submitButtonThankyou:hover {
+    background-image: linear-gradient(#84161f,#701319);
+
+    cursor: pointer;
 }
 
 .submitButtonThankyou a{

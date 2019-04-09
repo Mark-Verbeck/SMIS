@@ -14,9 +14,9 @@ class SmisForm extends Component {
     month: '',
     year: '1950',
     phone: '',
-    class1: "form-group formTwo mb-5",
+    class1: "",
     class2: "none",
-    class3: "",
+    class3: "stepTwoForm text-left",
     zipClass: "none",
     fNameClass: "none",
     lNameClass: "none",
@@ -233,24 +233,25 @@ class SmisForm extends Component {
       this.props.changePhoto();
 
       this.setState({
-        class1: "form-group formTwo mb-5 animated fadeOut",
-        class3: "animated fadeOut"
-
+        class1: "animated fadeOut",
+        class3: this.state.class3 + " heightTransition2"
       });
+
+      setTimeout(
+         function() {
+           this.setState({
+             class1: "none",
+             class2: "paddingBottom animated fadeIn",
+             zipClass: "none"
+           })
+         }
+         .bind(this),
+         900
+     );
+     
     }
 
-    setTimeout(
-       function() {
-         this.setState({
-           class1: " form-group formTwo mb-5 animated fadeIn",
-           class2: "paddingBottom animated fadeIn",
-           class3: "none",
-           zipClass: "none"
-         })
-       }
-       .bind(this),
-       900
-   );
+
 
 
   }
@@ -261,13 +262,13 @@ class SmisForm extends Component {
 
 
     return(
-      <div className={this.state.class1}>
+      <div className="form-group formTwo mb-5">
       <div className="wrap1 ">
 
 
 
-      <div className="stepTwoForm text-left">
-        <MDBRow className={this.state.class3}>
+      <div className={this.state.class3}>
+        <MDBRow className={this.state.class1}>
 
         <MDBCol lg="12" className="text-left" >
 

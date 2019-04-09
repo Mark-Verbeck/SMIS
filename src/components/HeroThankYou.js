@@ -55,7 +55,7 @@ class Hero extends Component {
             <div className="whiteBackground divPadding2 thankYouBox marginAuto mt-5 ">
               <h3 className="purpleFont">Want to contact us in the meantime?</h3>
               <p className="topHeroImg">you can reach us at <a href="tel: 9131234567" className="thankYouPhone"><strong>(913) 123-4567</strong></a></p>
-              <div className="submitButtonThankyou">
+              <div className="submitButtonThankyou hoverable">
               <a href="tel:9131234567"><img src={phone} className="img-responsive btnImg"/>(913) 123-4567</a>
               </div>
             </div>
